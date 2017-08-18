@@ -1,7 +1,11 @@
 import Vue from 'vue'
 import Router from 'vue-router'
 import Dashboard from '../views/Dashboard/Dashboard.vue'
+
 import Criminals from '../views/Criminals/Criminals.vue'
+import AddCriminal from '../views/Criminals/AddCriminal.vue'
+import UpdateCriminal from '../views/Criminals/UpdateCriminal.vue'
+
 import TelegramBot from '../views/TelegramBot/TelegramBot.vue'
 import VolumeThreshold from '../views/VolumeThreshold/VolumeThreshold.vue'
 
@@ -20,6 +24,16 @@ export default new Router({
       path: '/criminals',
       name: 'Criminals',
       component: Criminals
+    },
+    {
+      path: '/addcriminal',
+      name: 'AddCriminal',
+      component: AddCriminal
+    },
+    {
+      path: '/updatecriminal',
+      name: 'UpdateCriminal',
+      component: UpdateCriminal
     },
     {
       path: '/telegrambot',
