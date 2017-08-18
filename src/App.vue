@@ -1,23 +1,26 @@
 <template>
   <div id="app">
-    <img src="./assets/logo.png">
-    <router-view></router-view>
+    <navbar></navbar>
+    <sidebar></sidebar>
+    <app-main></app-main>
   </div>
 </template>
 
 <script>
+import Navbar from './components/layout/Navbar.vue'
+import Sidebar from './components/layout/Sidebar.vue'
+import AppMain from './components/layout/AppMain.vue'
+
 export default {
-  name: 'app'
+  name: 'app',
+  components: {
+    Navbar,
+    Sidebar,
+    AppMain
+  }
 }
 </script>
 
 <style>
-#app {
-  font-family: 'Avenir', Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-}
+@import '~bulma/css/bulma.css';
 </style>
