@@ -3,7 +3,7 @@
     <p class="subtitle is-4">Manage Criminals</p>
     <div class="box">
       <router-link to="/addcriminal">
-        <button type="submit" class="button is-primary">Add a Criminal</button>
+        <button type="submit" class="button is-info">Add a Criminal</button>
       </router-link>
     </div>
   </div>

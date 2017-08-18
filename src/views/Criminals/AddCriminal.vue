@@ -16,62 +16,58 @@
           </div>
           <hr>
 
-      <!-- Form Validation -->
-      <form @submit.prevent="validateBeforeSubmit">
-        <!-- Upload Image -->
-        <div class="field is-horizontal">
-          <div class="field-label is-normal">
-            <label class="label">Upload Image:</label>
-          </div>
-          <div class="field-body">
-            <div class="field is-grouped">
-              <div id="chooseFileDiv">
-                <p class="control">
-                  <div id="imageShowDiv" v-show="this.checked === true" v-bind:style="{ 'backgroundImage': 'url(' + this.image + ')' }"></div>
-                  <input type="file" accept="image/*"
-                  v-validate="'required|mimes:image/*|size:4000'" :class="{'input': true, 'is-danger': errors.has('image') }" @change="onFileChange" class="input" ref="image" name="image" id="image">
-                  <span v-show="errors.has('image')" class="help is-danger">{{ errors.first('image') }}</span>
-                </p>
+          <!-- Form Validation -->
+          <form @submit.prevent="validateBeforeSubmit">
+            <!-- Upload Image -->
+            <div class="field is-horizontal">
+              <div class="field-label is-normal">
+                <label class="label">Upload Image:</label>
               </div>
-            </div>
-          </div>
-        </div>
-  
-        <!--Input field for Name-->
-        <div class="field is-horizontal">
-          <div class="field-label is-normal">
-            <label class="label">Full Name:</label>
-          </div>
-          <div class="field-body">
-            <div class="field is-grouped">
-              <p class="control">
-                <input class="input" v-validate="'required|max:100'" :class="{'input': true, 'is-danger': errors.has('name') }"
-                name="name" type="text" placeholder="Name" v-model="name">
-                <span v-show="errors.has('name')" class="help is-danger">{{ errors.first('name') }}</span>
-              </p>
-            </div>
-          </div>
-        </div>
-
-        <!-- Save Button -->
-        <div id="saveCriminalBtn">
-          <div class="field is-horizontal">
-            <div class="field-label">
-            </div>
-            <div class="field-body">
-              <div class="field">
-                <div class="control">
-                  <button class="button is-primary" :disabled="isDisabled">
-                    Save
-                  </button>
+              <div class="field-body">
+                <div class="field is-grouped">
+                  <div id="chooseFileDiv">
+                    <p class="control">
+                      <div id="imageShowDiv" v-show="this.checked === true" v-bind:style="{ 'backgroundImage': 'url(' + this.image + ')' }"></div>
+                      <input type="file" accept="image/*" v-validate="'required|mimes:image/*|size:4000'" :class="{'input': true, 'is-danger': errors.has('image') }" @change="onFileChange" class="input" ref="image" name="image" id="image">
+                      <span v-show="errors.has('image')" class="help is-danger">{{ errors.first('image') }}</span>
+                    </p>
+                  </div>
                 </div>
               </div>
             </div>
-          </div>
-        </div>
 
-      </form>
+            <!--Input field for Name-->
+            <div class="field is-horizontal">
+              <div class="field-label is-normal">
+                <label class="label">Full Name:</label>
+              </div>
+              <div class="field-body">
+                <div class="field is-grouped">
+                  <p class="control">
+                    <input class="input" v-validate="'required|max:100'" :class="{'input': true, 'is-danger': errors.has('name') }" name="name" type="text" placeholder="Name" v-model="name">
+                    <span v-show="errors.has('name')" class="help is-danger">{{ errors.first('name') }}</span>
+                  </p>
+                </div>
+              </div>
+            </div>
 
+            <!-- Save Button -->
+            <div id="saveCriminalBtn">
+              <div class="field is-horizontal">
+                <div class="field-label">
+                </div>
+                <div class="field-body">
+                  <div class="field">
+                    <div class="control">
+                      <button class="button is-primary" :disabled="isDisabled">
+                        Save
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </form>
         </div>
       </div>
     </div>
@@ -84,6 +80,7 @@ export default {
     return {
       name: '',
       image: '',
+      checked: false,
       isDisabled: false
     }
   },
