@@ -8,12 +8,15 @@
       :fields="fields"
       @onBtnClick="onActions"
       ></vuetable>      
+      <br>
   </div>
 </template>
 
 <script>
-import Vuetable from '../../../components/vuetable/Vuetable.vue'
-import CustomActions from '../../../components/vuetable/CustomActions.vue'
+import Vuetable from '../../../components/vuetable2/Vuetable2.vue'
+import CustomActions from '../../../components/vuetable2/CustomActions2.vue'
+import { caseArchiveUrl } from '../../../config'
+import router from '../../../router'
 
 export default {
   components: {
@@ -22,7 +25,7 @@ export default {
   },
   data () {
     return {
-      apiUrl: 'insertURLhere',
+      apiUrl: caseArchiveUrl,
       fields:
       [
         {
@@ -32,12 +35,12 @@ export default {
           dataClass: 'right aligned'
         },
         {
-          name: 'Name',
-          title: 'Name'
+          name: 'location',
+          title: 'Location'
         },
         {
-          name: 'Description',
-          title: 'Description'
+          name: 'triggeredSoundValue',
+          title: 'Triggered Sound Value'
         },
         {
           name: '__component:custom-actions',
@@ -51,7 +54,7 @@ export default {
   methods: {
     // Click "Edit" Button -> routes user to update page
     onActions (action, data) {
-      router.push({ name: 'SendUnresolvedMsg', params: { staffId: action.data.staffId } })
+      router.push({ name: 'ReviewCaseArchived', params: { _id: action.data._id } })
     }
   }
 }

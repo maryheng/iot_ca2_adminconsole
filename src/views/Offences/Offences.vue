@@ -3,7 +3,7 @@
     <p class="subtitle is-4">Manage Offences</p>
     <div class="box">
       <router-link to="/addoffence">
-        <button type="submit" class="button is-info">Add an Offence</button>
+        <button type="submit" class="button is-primary">Add an Offence</button>
       </router-link>
       <br><br>
       <!--Vue Table-->
@@ -13,6 +13,7 @@
       :fields="fields"
       @onBtnClick="onActions"
       ></vuetable>      
+      <br>
     </div>
   </div>
 </template>
@@ -66,5 +67,9 @@ export default {
 #criminalsContainer > p {
   font-size: 23px;
   font-weight: 300;
+}
+
+.table {
+  width: 100%;
 }
 </style>

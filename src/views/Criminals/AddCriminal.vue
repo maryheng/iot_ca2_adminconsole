@@ -63,7 +63,7 @@
                 <p class="control">
                   <textarea class="textarea" type="text" placeholder="Description"
                   v-validate="'required|max:100'"
-                  :class="{'input': true, 'is-danger': errors.has('volume') }"
+                  :class="{'input': true, 'is-danger': errors.has('description') }"
                   name="description" v-model="description">
                   </textarea>                 
                   <span v-show="errors.has('description')" class="help is-danger">{{ errors.first('description') }}</span>
@@ -225,7 +225,6 @@ hr {
 }
 
 #imageShowDiv {
-  border-radius: 100%;
   width: 200px;
   height: 200px;
   display: block;

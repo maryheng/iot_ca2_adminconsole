@@ -29,7 +29,7 @@
     Offences
   </p>
   <ul class="menu-list">
-    <router-link :to=" { path: '/offences'} "><li><a>Manage Offences</a></li></router-link>
+    <router-link :to=" { path: '/offences'} "><li><a>Manage Types of Offences</a></li></router-link>
   </ul>
 </aside>
 </div>
@@ -50,6 +50,7 @@ export default {
   top: 6%;
   left: 0px;
   bottom: 0;
+  z-index: 0;
 }
 
 #sidebar .menu {

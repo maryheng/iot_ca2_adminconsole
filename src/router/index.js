@@ -10,7 +10,9 @@ import Records from '../views/Records/Records.vue'
 import NewCases from '../views/Records/childRoutes/NewCases.vue'
 import PendingCases from '../views/Records/childRoutes/PendingCases.vue'
 import CaseArchive from '../views/Records/childRoutes/CaseArchive.vue'
-import SendUnresolvedMsg from '../views/Records/SendUnresolvedMsg.vue'
+import ReviewNewCase from '../views/Records/childRoutes/NewCases/ReviewNewCase.vue'
+import ReviewPendingCase from '../views/Records/childRoutes/PendingCases/ReviewPendingCase.vue'
+import ReviewCaseArchived from '../views/Records/childRoutes/ArchivedCase/ReviewCaseArchived.vue'
 
 import VolumeThreshold from '../views/VolumeThreshold/VolumeThreshold.vue'
 
@@ -50,9 +52,9 @@ export default new Router({
       component: Records,
       children: [
         {
-        path: 'newcases',
-        name: 'NewCases',
-        component: NewCases        
+          path: 'newcases',
+          name: 'NewCases',
+          component: NewCases        
         },
         {
           path: 'pendingcases',
@@ -63,13 +65,8 @@ export default new Router({
             path: 'casearchive',
             name: 'CaseArchive',
             component: CaseArchive     
-            },
+          }
       ]
-    },
-    {
-      path: '/sendunresolvedmsg',
-      name: 'SendUnresolvedMsg',
-      component: SendUnresolvedMsg
     },
     {
       path: '/volumethreshold',
@@ -90,6 +87,21 @@ export default new Router({
       path: '/updateoffence/:_id',
       name: 'UpdateOffence',
       component: UpdateOffence
+    },
+    {
+      path: '/reviewnewcase/:_id',
+      name: 'ReviewNewCase',
+      component: ReviewNewCase
+    },
+    {
+      path: '/reviewpendingcase/:_id',
+      name: 'ReviewPendingCase',
+      component: ReviewPendingCase
+    },
+    {
+      path: '/reviewcasearchived/:_id',
+      name: 'ReviewCaseArchived',
+      component: ReviewCaseArchived
     }
   ]
 })
