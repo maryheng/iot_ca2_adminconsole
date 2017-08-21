@@ -25,6 +25,12 @@
   <ul class="menu-list">
     <router-link :to=" { path: '/volumethreshold'} "><li><a>Manage Sound Threshold</a></li></router-link>
   </ul>
+  <p class="menu-label">
+    Offences
+  </p>
+  <ul class="menu-list">
+    <router-link :to=" { path: '/offences'} "><li><a>Manage Offences</a></li></router-link>
+  </ul>
 </aside>
 </div>
 </template>

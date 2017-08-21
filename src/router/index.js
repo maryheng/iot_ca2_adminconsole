@@ -11,6 +11,10 @@ import SendUnresolvedMsg from '../views/TelegramBot/SendUnresolvedMsg.vue'
 
 import VolumeThreshold from '../views/VolumeThreshold/VolumeThreshold.vue'
 
+import Offences from '../views/Offences/Offences.vue'
+import AddOffence from '../views/Offences/AddOffence.vue'
+import UpdateOffence from '../views/Offences/UpdateOffence.vue'
+
 Vue.use(Router)
 
 export default new Router({
@@ -51,6 +55,21 @@ export default new Router({
       path: '/volumethreshold',
       name: 'VolumeThreshold',
       component: VolumeThreshold
+    },
+    {
+      path: '/offences',
+      name: 'Offences',
+      component: Offences
+    },
+    {
+      path: '/addoffence',
+      name: 'AddOffence',
+      component: AddOffence
+    },
+    {
+      path: '/updateoffence/:_id',
+      name: 'UpdateOffence',
+      component: UpdateOffence
     }
   ]
 })

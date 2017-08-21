@@ -184,7 +184,7 @@ export default {
         this.$refs.simplert.openSimplert(errorAlert)
       })
     },
-    // Delete Staff Record
+    // Delete Criminal Record
     deleteBtn () {
       let confirmFn = () => {
         this.isDisabled = true
@@ -260,7 +260,6 @@ export default {
         this.description = response.data.description
         this.image = 'https://iotca2blob.blob.core.windows.net/criminalimages/' + response.data.imageName
         this.imageName = 'https://iotca2blob.blob.core.windows.net/criminalimages/' + response.data.imageName
-        console.log(this.image)
       })
       .catch((error) => {
         console.log(error)
