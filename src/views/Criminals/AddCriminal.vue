@@ -44,12 +44,33 @@
               <div class="field-body">
                 <div class="field is-grouped">
                   <p class="control">
-                    <input class="input" v-validate="'required|max:100'" :class="{'input': true, 'is-danger': errors.has('name') }" name="name" type="text" placeholder="Name" v-model="name">
+                    <input class="input" v-validate="'required|max:100'"
+                    :class="{'input': true, 'is-danger': errors.has('name') }"
+                    name="name" type="text" placeholder="Name" v-model="name">
                     <span v-show="errors.has('name')" class="help is-danger">{{ errors.first('name') }}</span>
                   </p>
                 </div>
               </div>
             </div>
+
+          <!--Input field for Description-->
+          <div class="field is-horizontal">
+            <div class="field-label is-normal">
+              <label class="label">Description:</label>
+            </div>
+            <div class="field-body">
+              <div class="field is-grouped">
+                <p class="control">
+                  <textarea class="textarea" type="text" placeholder="Description"
+                  v-validate="'required|max:100'"
+                  :class="{'input': true, 'is-danger': errors.has('volume') }"
+                  name="description" v-model="description">
+                  </textarea>                 
+                  <span v-show="errors.has('description')" class="help is-danger">{{ errors.first('description') }}</span>
+                </p>
+              </div>
+            </div>
+          </div>
 
             <!-- Save Button -->
             <div id="saveCriminalBtn">
@@ -80,6 +101,8 @@ export default {
     return {
       name: '',
       image: '',
+      imageName: '',
+      description: '',
       checked: false,
       isDisabled: false
     }

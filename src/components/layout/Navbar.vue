@@ -3,7 +3,7 @@
 <nav class="nav has-shadow">
   <div class="container">
     <div class="nav-left">
-      <p>Spycam</p>
+      <p>IOT_CA2</p>
     </div>
   </div>
 </nav>
@@ -24,7 +24,7 @@ export default {
 
 p {
   font-size: 21px;
-  margin: 15px 0px 0 50px;
+  margin: 1% 0% 0% 5%;
   font-weight: bold;
 }
 

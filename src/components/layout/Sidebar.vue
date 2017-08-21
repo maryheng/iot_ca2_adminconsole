@@ -20,10 +20,10 @@
     <router-link :to=" { path: '/telegrambot'} "><li><a>Manage Telegram Bot</a></li></router-link>
   </ul>
   <p class="menu-label">
-    Volume Threshold
+    Sound Threshold
   </p>
   <ul class="menu-list">
-    <router-link :to=" { path: '/volumethreshold'} "><li><a>Manage Volume Threshold</a></li></router-link>
+    <router-link :to=" { path: '/volumethreshold'} "><li><a>Manage Sound Threshold</a></li></router-link>
   </ul>
 </aside>
 </div>

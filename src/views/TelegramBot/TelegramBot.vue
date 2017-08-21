@@ -1,11 +1,7 @@
 <template>
   <div id="criminalsContainer">
-    <p class="subtitle is-4">Manage Criminals</p>
+    <p class="subtitle is-4">Manage Telegram Bot</p>
     <div class="box">
-      <router-link to="/addcriminal">
-        <button type="submit" class="button is-info">Add a Criminal</button>
-      </router-link>
-
       <!--Vue Table-->
       <vuetable
       ref="vuetable"

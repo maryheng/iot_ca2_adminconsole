@@ -1,26 +1,46 @@
 <template>
-  <div id="addcriminalContainer">
-    <p class="subtitle is-4">Manage Volume Threshold</p>
+  <div id="volumeThresholdContainer">
+    <p class="subtitle is-4">Manage Sound Threshold</p>
     <div class="box">
       <div class="innerContainer">
         <br>
         <div class="header">
-          <p class="title is-4">Volume Threshold Details</p>
+          <p class="title is-4">Sound Threshold Details</p>
         </div>
         <hr>
+
+          <!--Input field for Name-->
+          <div class="field is-horizontal">
+            <div class="field-label is-normal">
+              <label class="label">Current Sound Threshold (%):</label>
+            </div>
+            <div class="field-body">
+              <div class="field is-grouped">
+                <p class="control">
+                  <div id="currentSoundThreshold">
+                    <p>{{ currentSoundThreshold }}</p>
+                  </div>
+                </p>
+              </div>
+            </div>
+          </div>
+
 
         <!-- Form Validation -->
         <form @submit.prevent="validateBeforeSubmit">
           <!--Input field for Name-->
           <div class="field is-horizontal">
             <div class="field-label is-normal">
-              <label class="label">Volume Threshold:</label>
+              <label class="label">Sound Threshold (%):</label>
+              <p class="help">*Increase/Decrease the sound threshold using %.</p>
             </div>
             <div class="field-body">
               <div class="field is-grouped">
                 <p class="control">
-                  <input class="input" v-validate="'required|max:100|numeric'" :class="{'input': true, 'is-danger': errors.has('volume') }" name="volume" type="text" placeholder="E.g. 500 (minimum)" v-model="volume">
-                  <span v-show="errors.has('volume')" class="help is-danger">{{ errors.first('volume') }}</span>
+                  <input class="input" v-validate="'required|numeric|min_value:1|max_value:100'"
+                  :class="{'input': true, 'is-danger': errors.has('sound threshold') }"
+                  name="sound threshold" type="text" placeholder="E.g. 10" v-model="soundThreshold">
+                  <span v-show="errors.has('sound threshold')" class="help is-danger">{{ errors.first('sound threshold') }}</span>
                 </p>
               </div>
             </div>
@@ -43,36 +63,87 @@
             </div>
           </div>
         </form>
+        <!-- Simplert Notification -->
+        <simplert :useRadius="true" :useIcon="true" ref="simplert">
+        </simplert>        
       </div>
     </div>
   </div>
 </template>
 
 <script>
+import axios from 'axios'
+import { preferencesUrl } from '../../config'
+import Simplert from 'vue2-simplert/src/simplert'
+
 export default {
+  components: {
+    Simplert
+  },
   data () {
     return {
-      volume: '',
+      currentSoundThreshold: '',
+      soundThreshold: '',
       isDisabled: false
     }
   },
   methods: {
     // Validation on Submit
     validateBeforeSubmit () {
-
+      axios.put(preferencesUrl, {
+        soundThreshold: this.soundThreshold
+      })
+        .then((response) => {
+          this.isDisabled = true
+          let closeFn = () => {
+            location.reload()
+          }
+          let successAlert = {
+            title: 'Success',
+            message: response.data.message,
+            type: 'success',
+            onClose: closeFn
+          }
+          this.$refs.simplert.openSimplert(successAlert)
+        })
+        .catch((error) => {
+          this.isDisabled = false
+          let errorAlert = {
+            title: 'Error',
+            message: error.response.data.message,
+            type: 'error'
+          }
+          this.$refs.simplert.openSimplert(errorAlert)         
+        })
     } 
+  },
+  created () {
+    // GET all data from soundThreshold url
+    axios.get(preferencesUrl)
+      .then((response) => {
+        console.log(response)
+        this.currentSoundThreshold = response.data.soundThreshold
+      })
+      .catch((error) => {
+        console.log(error)
+      })
   }
 }
 </script>
 
 <style>
-#addcriminalContainer p {
+#volumeThresholdContainer > p {
   font-size: 23px;
   font-weight: 300;
 }
 
-#addcriminalContainer .box {
-  padding-bottom: 11%;
+.header >  p {
+  font-size: 10px;
+  font-weight: 300;
+}
+
+#volumeThresholdContainer .box {
+  padding-bottom: 29%;
 }
 
 .innerContainer {
@@ -108,5 +179,9 @@ input {
 
 label {
   margin-top: 2.4%;
+}
+
+#currentSoundThreshold {
+  margin-top: 0.7%;
 }
 </style>

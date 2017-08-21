@@ -5,7 +5,7 @@
       <router-link to="/addcriminal">
         <button type="submit" class="button is-info">Add a Criminal</button>
       </router-link>
-
+      <br><br>
       <!--Vue Table-->
       <vuetable
       ref="vuetable"
