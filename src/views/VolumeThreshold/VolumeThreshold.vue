@@ -90,31 +90,42 @@ export default {
   methods: {
     // Validation on Submit
     validateBeforeSubmit () {
-      axios.put(preferencesUrl, {
-        soundThreshold: this.soundThreshold
+      this.$validator.validateAll().then(result => {
+        if (result) { // no errors from fields
+          axios.put(preferencesUrl, {
+            soundThreshold: this.soundThreshold
+          })
+            .then((response) => {
+              this.isDisabled = true
+              let closeFn = () => {
+                location.reload()
+              }
+              let successAlert = {
+                title: 'Success',
+                message: response.data.message,
+                type: 'success',
+                onClose: closeFn
+              }
+              this.$refs.simplert.openSimplert(successAlert)
+            })
+            .catch((error) => {
+              this.isDisabled = false
+              let errorAlert = {
+                title: 'Error',
+                message: error.response.data.message,
+                type: 'error'
+              }
+              this.$refs.simplert.openSimplert(errorAlert)         
+            })
+          return
+        } // if fields still have errors
+        let errorAlert = {
+          title: 'Error',
+          message: 'Some fields are incorrect!',
+          type: 'error'
+        }
+        this.$refs.simplert.openSimplert(errorAlert)        
       })
-        .then((response) => {
-          this.isDisabled = true
-          let closeFn = () => {
-            location.reload()
-          }
-          let successAlert = {
-            title: 'Success',
-            message: response.data.message,
-            type: 'success',
-            onClose: closeFn
-          }
-          this.$refs.simplert.openSimplert(successAlert)
-        })
-        .catch((error) => {
-          this.isDisabled = false
-          let errorAlert = {
-            title: 'Error',
-            message: error.response.data.message,
-            type: 'error'
-          }
-          this.$refs.simplert.openSimplert(errorAlert)         
-        })
     } 
   },
   created () {

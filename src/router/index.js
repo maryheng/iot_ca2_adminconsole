@@ -33,7 +33,7 @@ export default new Router({
       component: AddCriminal
     },
     {
-      path: '/updatecriminal',
+      path: '/updatecriminal/:criminalId',
       name: 'UpdateCriminal',
       component: UpdateCriminal
     },

@@ -90,19 +90,29 @@
             </div>
           </form>
         </div>
+        <!-- Simplert Notification -->
+        <simplert :useRadius="true" :useIcon="true" ref="simplert">
+        </simplert>     
       </div>
     </div>
   </div>
 </template>
 
 <script>
+import { criminalsUrl } from '../../config'
+import axios from 'axios'
+import router from '../../router'
+import Simplert from 'vue2-simplert/src/simplert'
+
 export default {
+  components: {
+    Simplert
+  },
   data () {
     return {
       name: '',
-      image: '',
-      imageName: '',
       description: '',
+      image: '',
       checked: false,
       isDisabled: false
     }
@@ -110,7 +120,49 @@ export default {
   methods: {
     // Validation on Submit
     validateBeforeSubmit () {
+      this.$validator.validateAll().then(result => {
+        if (result) { // no errors from fields
+          this.isDisabled = true
+          if (this.$refs.image.files[0]) {
+            let formData = new FormData()
 
+            formData.append('criminalImage', this.$refs.image.files[0])
+            formData.append('name', this.name)
+            formData.append('description', this.description)
+
+            axios.post(criminalsUrl, formData)
+              .then((response) => {
+                this.isDisabled = true
+                let closeFn = () => {
+                  router.push({ path: '/criminals' })
+                }
+                let successAlert = {
+                  title: 'Success',
+                  message: response.data.message,
+                  type: 'success',
+                  onClose: closeFn
+                }
+                this.$refs.simplert.openSimplert(successAlert)
+              })
+              .catch((error) => {
+                this.isDisabled = false
+                let errorAlert = {
+                  title: 'Error',
+                  message: error.response.data.message,
+                  type: 'error'
+                }
+                this.$refs.simplert.openSimplert(errorAlert)         
+              })
+          }
+          return
+        } // If fields still have errors
+        let errorAlert = {
+          title: 'Error',
+          message: 'Some fields are incorrect!',
+          type: 'error'
+        }
+        this.$refs.simplert.openSimplert(errorAlert)
+      })
     },
     onFileChange (e) {
       this.checked = true

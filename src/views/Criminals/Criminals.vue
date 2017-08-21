@@ -20,6 +20,8 @@
 <script>
 import Vuetable from '../../components/vuetable/Vuetable.vue'
 import CustomActions from '../../components/vuetable/CustomActions.vue'
+import { criminalsUrl } from '../../config'
+import router from '../../router'
 
 export default {
   components: {
@@ -28,7 +30,7 @@ export default {
   },
   data () {
     return {
-      apiUrl: 'insertURLhere',
+      apiUrl: criminalsUrl,
       fields:
       [
         {
@@ -38,11 +40,11 @@ export default {
           dataClass: 'right aligned'
         },
         {
-          name: 'Name',
+          name: 'name',
           title: 'Name'
         },
         {
-          name: 'Description',
+          name: 'description',
           title: 'Description'
         },
         {
@@ -57,7 +59,7 @@ export default {
   methods: {
     // Click "Edit" Button -> routes user to update page
     onActions (action, data) {
-      router.push({ name: 'UpdateCriminal', params: { staffId: action.data.staffId } })
+      router.push({ name: 'UpdateCriminal', params: { criminalId: action.data.criminalId } })
     }
   }
 }
