@@ -1,6 +1,6 @@
 // Base URL
-// export const baseUrl = 'http://iot-ca2.azurewebsites.net'
-export const baseUrl = ''
+export const baseUrl = 'http://iot-ca2.azurewebsites.net'
+// export const baseUrl = ''
 
 // Dashboard Routes
 export const countFalseAlarms = baseUrl + '/api/stats/falseAlarms'
