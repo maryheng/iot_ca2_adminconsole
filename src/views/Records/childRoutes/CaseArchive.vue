@@ -1,5 +1,6 @@
 <template>
   <div id="criminalsContainer">
+    <br>
       <!--Vue Table-->
       <vuetable
       ref="vuetable"
@@ -60,5 +61,9 @@ export default {
 #criminalsContainer > p {
   font-size: 23px;
   font-weight: 300;
+}
+
+.table {
+  width: 100%;
 }
 </style>
