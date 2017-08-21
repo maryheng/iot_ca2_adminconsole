@@ -59,7 +59,8 @@ export default {
   methods: {
     // Click "Edit" Button -> routes user to update page
     onActions (action, data) {
-      router.push({ name: 'UpdateCriminal', params: { criminalId: action.data.criminalId } })
+      console.log(action)
+      router.push({ name: 'UpdateCriminal', params: { _id: action.data._id } })
     }
   }
 }
