@@ -14,10 +14,10 @@
     <router-link :to=" { path: '/criminals'} "><li><a>Manage Criminals</a></li></router-link>
   </ul>
   <p class="menu-label">
-    Telegram Bot
+    Records of Cases
   </p>
   <ul class="menu-list">
-    <router-link :to=" { path: '/telegrambot'} "><li><a>Manage Telegram Bot</a></li></router-link>
+    <router-link :to=" { path: '/records/newcases'} "><li><a>Manage Records of Cases</a></li></router-link>
   </ul>
   <p class="menu-label">
     Sound Threshold

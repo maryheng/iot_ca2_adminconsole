@@ -18,7 +18,7 @@
               <div class="field is-grouped">
                 <p class="control">
                   <div id="currentSoundThreshold">
-                    <p>{{ currentSoundThreshold }}</p>
+                    <p><strong>{{ currentSoundThreshold }}</strong></p>
                   </div>
                 </p>
               </div>

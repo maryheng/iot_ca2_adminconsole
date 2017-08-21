@@ -1,7 +1,5 @@
 <template>
   <div id="criminalsContainer">
-    <p class="subtitle is-4">Manage Telegram Bot</p>
-    <div class="box">
       <!--Vue Table-->
       <vuetable
       ref="vuetable"
@@ -9,13 +7,12 @@
       :fields="fields"
       @onBtnClick="onActions"
       ></vuetable>      
-    </div>
   </div>
 </template>
 
 <script>
-import Vuetable from '../../components/vuetable/Vuetable.vue'
-import CustomActions from '../../components/vuetable/CustomActions.vue'
+import Vuetable from '../../../components/vuetable/Vuetable.vue'
+import CustomActions from '../../../components/vuetable/CustomActions.vue'
 
 export default {
   components: {

@@ -6,8 +6,11 @@ import Criminals from '../views/Criminals/Criminals.vue'
 import AddCriminal from '../views/Criminals/AddCriminal.vue'
 import UpdateCriminal from '../views/Criminals/UpdateCriminal.vue'
 
-import TelegramBot from '../views/TelegramBot/TelegramBot.vue'
-import SendUnresolvedMsg from '../views/TelegramBot/SendUnresolvedMsg.vue'
+import Records from '../views/Records/Records.vue'
+import NewCases from '../views/Records/childRoutes/NewCases.vue'
+import PendingCases from '../views/Records/childRoutes/PendingCases.vue'
+import CaseArchive from '../views/Records/childRoutes/CaseArchive.vue'
+import SendUnresolvedMsg from '../views/Records/SendUnresolvedMsg.vue'
 
 import VolumeThreshold from '../views/VolumeThreshold/VolumeThreshold.vue'
 
@@ -42,9 +45,26 @@ export default new Router({
       component: UpdateCriminal
     },
     {
-      path: '/telegrambot',
-      name: 'TelegramBot',
-      component: TelegramBot
+      path: '/records',
+      name: 'Records',
+      component: Records,
+      children: [
+        {
+        path: 'newcases',
+        name: 'NewCases',
+        component: NewCases        
+        },
+        {
+          path: 'pendingcases',
+          name: 'PendingCases',
+          component: PendingCases        
+          },
+          {
+            path: 'casearchive',
+            name: 'CaseArchive',
+            component: CaseArchive     
+            },
+      ]
     },
     {
       path: '/sendunresolvedmsg',

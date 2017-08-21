@@ -102,7 +102,7 @@ export default {
         if (result) { // no errors from fields
           this.isDisabled = true
 
-            axios.post(offencesUrl, {
+            axios.put(offencesUrl + this.offenceId, {
               offenceName: this.offenceName
             })
               .then((response) => {
