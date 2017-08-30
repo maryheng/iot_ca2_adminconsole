@@ -22,17 +22,22 @@
       </div>
     </div>
 
-    <!-- <p>Graph</p>
+    <p>Graph</p>
     <div class="box">
-    </div> -->
+      <alert-graph></alert-graph>
+    </div>
   </div>
 </template>
 
 <script>
 import { preferencesUrl, countFalseAlarms, countTriggered } from '../../config'
+import AlertGraph from '../../components/graph/AlertGraph.vue'
 import axios from 'axios'
 
 export default {
+  component: {
+    AlertGraph
+  },
   data () {
     return {
       soundThresholdValue: '',
